@@ -1,0 +1,72 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.dashboard.kpi:
+      branch: master
+      repo: https://github.com/cessda/cessda.dashboard.kpi
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi git:
+        commands:
+        - /usr/bin/env sh .sqa/script.onyx_intuitive_pelican.sh
+        container: qc.acc_forest_mysterious_fox
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.rose_daring_eel.sh
+        container: qc.doc_grape_happy_flamingo
+      github.com/cessda/cessda.dashboard.kpi git:
+        commands:
+        - /usr/bin/env sh .sqa/script.peony_reflective_frog.sh
+        container: qc.doc_porcelain_enthusiastic_meerkat
+      github.com/cessda/cessda.dashboard.kpi markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.daffodil_authentic_hamster.sh
+        container: qc.doc_rose_nervous_donkey
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.dahlia_dizzy_camel.sh
+        container: qc.lic_khaki_dedicated_leopard
+  QC.Sec:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.strawberry_persistent_eel.sh
+        container: qc.sec_chili_peppy_condor
+  QC.Sty:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.ceru_devoted_osprey.sh
+        container: qc.sty_horizon_decisive_phoenix
+      github.com/cessda/cessda.dashboard.kpi hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.marina_focused_moose.sh
+        container: qc.sty_jasmine_resourceful_caribou
+      github.com/cessda/cessda.dashboard.kpi pynblint.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.bone_stoic_grizzly.sh
+        container: qc.sty_silver_scrappy_bullfrog
+  QC.Uni:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.ruby_graceful_roadrunner.sh
+        container: qc.uni_fog_understanding_albatross
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.dashboard.kpi get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.gamboge_responsible_turkey.sh
+        container: qc.ver_violet_audacious_camel
+timeout: 5400
